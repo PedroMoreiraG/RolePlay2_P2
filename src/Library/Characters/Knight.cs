@@ -3,6 +3,7 @@ namespace Ucu.Poo.RoleplayGame;
 public class Knight:ICharacters
 {
     private int health = 100;
+    private List<IItem> items = new List<IItem>();
 
     public Knight(string name)
     {
@@ -52,9 +53,19 @@ public class Knight:ICharacters
             this.Health -= power - this.DefenseValue;
         }
     }
-
+    
     public void Cure()
     {
         this.Health = 100;
+    }
+
+    public void AddItem(IItem item)
+    {
+        this.items.Add(item);
+    }
+
+    public void RemoveItem(IItem item)
+    {
+        this.items.Remove(item);
     }
 }

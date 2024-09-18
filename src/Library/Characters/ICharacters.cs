@@ -7,4 +7,6 @@ public interface ICharacters
     int AttackValue { get; }
     int DefenseValue { get; }
     void Cure();
+    void AddItem(IItem item);
+    void RemoveItem(IItem item);
 }

@@ -3,7 +3,8 @@ namespace Ucu.Poo.RoleplayGame;
 public class Dwarf:ICharacters
 {
     private int health = 100;
-
+    private List<IItem> items = new List<IItem>();
+    
     public Dwarf(string name)
     {
         this.Name = name;
@@ -56,5 +57,15 @@ public class Dwarf:ICharacters
     public void Cure()
     {
         this.Health = 100;
+    }
+    
+    public void AddItem(IItem item)
+    {
+        this.items.Add(item);
+    }
+
+    public void RemoveItem(IItem item)
+    {
+        this.items.Remove(item);
     }
 }
