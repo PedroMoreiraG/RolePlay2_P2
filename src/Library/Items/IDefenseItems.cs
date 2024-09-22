@@ -2,5 +2,5 @@
 
 public interface IDefenseItems:IItem
 {
-   public int DefenseValue { get; }
+   int DefenseValue { get; }
 }

@@ -27,7 +27,7 @@ public class Knight:ICharacters
         get
         {
             int attack=0;
-            foreach(IAtackItems item in Items)
+            foreach(IAttackItems item in Items)
             {
                 attack+=item.AttackValue;
             }

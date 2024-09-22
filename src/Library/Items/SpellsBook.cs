@@ -1,15 +1,25 @@
 namespace Ucu.Poo.RoleplayGame;
 
-public class SpellsBook
+public class SpellsBook:IMagicalItem
 {
-    public Spell[] Spells { get; set; }
+    private List<ISpell> Spells= new List<ISpell>();
+        
+    public  void  AddSpell(ISpell spell )   
+    {
+        Spells.Add(spell);
+    }
     
+    // Para sacar hechizos
+    public void RemoveSpell (ISpell spell )
+    {
+        Spells.Remove(spell);
+    }
     public int AttackValue
     {
         get
         {
             int value = 0;
-            foreach (Spell spell in this.Spells)
+            foreach (ISpell spell in Spells)
             {
                 value += spell.AttackValue;
             }
@@ -22,7 +32,7 @@ public class SpellsBook
         get
         {
             int value = 0;
-            foreach (Spell spell in this.Spells)
+            foreach (ISpell spell in Spells)
             {
                 value += spell.DefenseValue;
             }

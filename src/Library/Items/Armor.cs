@@ -1,8 +1,8 @@
 namespace Ucu.Poo.RoleplayGame;
 
-public class Armor
+public class Armor:IDefenseItems
 {
-    public static int DefenseValue
+    public int DefenseValue
     {
         get
         {

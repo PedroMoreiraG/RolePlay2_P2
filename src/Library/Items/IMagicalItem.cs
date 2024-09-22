@@ -2,6 +2,5 @@
 
 public interface IMagicalItem:IItem
 {
-    public   int AttackValue { get; }
-    public int DefenseValue { get; }
+    // Creo interface Items con el fin de albergar todos los items sean de ataque o de defensa
 }

@@ -1,6 +1,6 @@
 namespace Ucu.Poo.RoleplayGame;
 
-public class Staff
+public class Staff:IDefenseItems,IAttackItems
 {
     public int AttackValue 
     {
@@ -10,6 +10,7 @@ public class Staff
         } 
     }
 
+    
     public int DefenseValue
     {
         get

@@ -31,13 +31,13 @@ public class Wizard:IMagicalCharacters
         get
         {
             int attack=0;
-            foreach(IAtackItems item in Items)
+            foreach(IAttackItems item in Items)
             {
                 attack+=item.AttackValue;
             }
-            foreach(IMagicalItem item in MagicalItems)
+            foreach(IMagicalAttackItems item in MagicalItems)
             {
-                attack+=item.AttackValue;
+                attack += item.AttackValue;
             }
             return attack;
         }
@@ -52,7 +52,7 @@ public class Wizard:IMagicalCharacters
             {
                 this.DefenseValue+=item.DefenseValue;
             }
-            foreach(IMagicalItem item in MagicalItems)
+            foreach(IMagicalDefenseItems item in MagicalItems)
             {
                 this.DefenseValue+=item.DefenseValue;
             }

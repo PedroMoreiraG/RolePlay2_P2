@@ -1,6 +1,6 @@
 namespace Ucu.Poo.RoleplayGame;
 
-public class Bow
+public class Bow:IAttackItems
 {
     public int AttackValue 
     {
