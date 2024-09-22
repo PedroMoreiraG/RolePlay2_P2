@@ -9,4 +9,5 @@ public interface ICharacters
     void Cure();
     void AddItem(IItem item);
     void RemoveItem(IItem item);
+    void ReceiveAttack(ICharacters attacker);
 }

@@ -2,7 +2,7 @@ namespace Ucu.Poo.RoleplayGame;
 
 public class Armor
 {
-    public int DefenseValue
+    public static int DefenseValue
     {
         get
         {

@@ -2,68 +2,83 @@ namespace Ucu.Poo.RoleplayGame;
 
 public class Archer:ICharacters
 {
-    private int health = 100;
-    private List<IItem> items = new List<IItem>();
-
+    private int health;
+    private List<IItem> Items= new List<IItem>();
+    
     public Archer(string name)
     {
-        this.Name = name;
+        string Name = name;
     }
-
-    public string Name { get; set; }
     
-    public Bow Bow { get; set; }
-
-    public Helmet Helmet { get; set; }
-
-    public int AttackValue
+    public string Name
     {
-        get
-        {
-            return Bow.AttackValue;
-        }
+        get{ return this.Name; }
     }
-
-    public int DefenseValue
-    {
-        get
-        {
-            return Helmet.DefenseValue;
-        }
-    }
-
+    
     public int Health
     {
+        get{ return this.Health; }
+        set{ this.Health=value; }
+    }
+    
+    
+    public int AttackValue
+    {   
         get
         {
-            return this.health;
-        }
-        private set
-        {
-            this.health = value < 0 ? 0 : value;
+            int attack=0;
+            foreach(IAtackItems item in Items)
+            {
+                attack+=item.AttackValue;
+            }
+            return attack;
         }
     }
-
-    public void ReceiveAttack(int power)
+    
+    
+    public int DefenseValue
+    {   
+        get
+        {
+            foreach(IDefenseItems item in Items)
+            {
+                this.DefenseValue+=item.DefenseValue;
+            }
+            return this.DefenseValue;
+        }
+        set{this.DefenseValue=value;}
+    }
+    
+    
+    public void AddItem(IItem item)
     {
-        if (this.DefenseValue < power)
-        {
-            this.Health -= power - this.DefenseValue;
-        }
+        this.Items.Add(item);
     }
-
+    
+    
+    public void RemoveItem(IItem item)
+    {
+        this.Items.Remove(item);
+    }
+    
+    
     public void Cure()
     {
         this.Health = 100;
     }
     
-    public void AddItem(IItem item)
+    
+    public void ReceiveAttack(ICharacters attacker)
     {
-        this.items.Add(item);
-    }
+        if(attacker.AttackValue> this.DefenseValue)
+        {
+            this.Health-= attacker.AttackValue-this.DefenseValue;
+            Console.WriteLine($"El ataque ha vencido las defensas de {this.Name}.\nVida restante: {this.Health}");
+        }
+        else{
+            this.DefenseValue-=attacker.AttackValue;
+            Console.WriteLine($"Los escudos de {this.Name} resistieron el ataque.\nEscudo restante: {this.DefenseValue}");
 
-    public void RemoveItem(IItem item)
-    {
-        this.items.Remove(item);
+        }
     }
 }
