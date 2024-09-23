@@ -3,11 +3,11 @@
 Wizard gandalf = new Wizard("Gandalf");
 Staff staff = new Staff();
 SpellsBook spellsBook = new SpellsBook();
-Spell bolaDeFuego = new Spell("Bola de fuego",20);
+Spell bolaDeFuego = new Spell("Bola de fuego",20,20);
 spellsBook.AddSpell(bolaDeFuego);
 gandalf.AddItem(staff);
 gandalf.AddItem(spellsBook);
-
+Console.WriteLine("La defensa es: " + gandalf.DefenseValue);
 
 Dwarf gimli = new Dwarf("Gimli");
 Axe hacha = new Axe();

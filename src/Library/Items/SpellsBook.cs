@@ -1,6 +1,6 @@
 namespace Ucu.Poo.RoleplayGame;
 
-public class SpellsBook:IMagicalAttackItems
+public class SpellsBook:IMagicalItem
 {
     public List<ISpell> Spells= new List<ISpell>();
         

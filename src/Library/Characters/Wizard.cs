@@ -44,6 +44,11 @@ public class Wizard:IMagicalCharacters
                 {
                     attack += attackMagicalItem.AttackValue;
                 }
+
+                if (item is SpellsBook spellsbook)
+                {
+                    attack += spellsbook.AttackValue;
+                }
             }
             return attack;
         }
@@ -69,6 +74,11 @@ public class Wizard:IMagicalCharacters
                 if (item is IMagicalDefenseItems defenseMagicalItem)
                 {
                     defense += defenseMagicalItem.DefenseValue; 
+                }
+
+                if (item is SpellsBook spellsBook)
+                {
+                    defense += spellsBook.DefenseValue;
                 }
             }
             return defense;
