@@ -8,7 +8,8 @@ public class Wizard:IMagicalCharacters
     private int health;
     private List<IItem> Items= new List<IItem>();
     private List<IMagicalItem> MagicalItems= new List<IMagicalItem>();
-    
+    public Staff Staff;
+
     public Wizard(string name)
     {
         string Name = name;
@@ -60,8 +61,10 @@ public class Wizard:IMagicalCharacters
         }
         set{ this.DefenseValue=value;}
     }
-    
-    
+
+    public SpellsBook SpellsBook { get; set; }
+
+
     public void AddItem(IItem item)
     {
         this.Items.Add(item);

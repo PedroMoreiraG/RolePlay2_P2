@@ -2,7 +2,7 @@ namespace Ucu.Poo.RoleplayGame;
 
 public class SpellsBook:IMagicalItem
 {
-    private List<ISpell> Spells= new List<ISpell>();
+    public List<ISpell> Spells= new List<ISpell>();
         
     public  void  AddSpell(ISpell spell )   
     {

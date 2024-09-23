@@ -49,8 +49,12 @@ public class Dwarf:ICharacters
         }
         set{ this.DefenseValue=value; }
     }
-    
-    
+
+    public Axe Axe { get; set; }
+    public Helmet Helmet { get; set; }
+    public Shield Shield { get; set; }
+
+
     public void AddItem(IItem item)
     {
         this.Items.Add(item);
