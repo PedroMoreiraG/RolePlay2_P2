@@ -1,5 +1,6 @@
 namespace Ucu.Poo.RoleplayGame;
 
+//Interface para albergar los characters, con sus propiedades
 public interface ICharacters
 {
     public string Name { get; }

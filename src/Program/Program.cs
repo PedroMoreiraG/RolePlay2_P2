@@ -1,14 +1,14 @@
 ﻿using Ucu.Poo.RoleplayGame;
 
-Wizard gandalf = new Wizard("Gandalf");
-Staff staff = new Staff();
-SpellsBook spellsBook = new SpellsBook();
-Spell bolaDeFuego = new Spell("Bola de fuego",20,20);
-spellsBook.AddSpell(bolaDeFuego);
-gandalf.AddItem(staff);
-gandalf.AddItem(spellsBook);
-Console.WriteLine("La defensa es: " + gandalf.DefenseValue);
-
+Wizard gandalf = new Wizard("Gandalf"); // Personaje Mago
+Staff staff = new Staff(); // Creamos baculo
+SpellsBook spellsBook = new SpellsBook(); // Creamos libro de hechizos
+Spell bolaDeFuego = new Spell("Bola de fuego",20,20); // Creamos item de hechizo, con su ataque y defensa
+spellsBook.AddSpell(bolaDeFuego); //Agregamos item bolaDeFuego al libro
+gandalf.AddItem(staff); // Le damos item al mago
+gandalf.AddItem(spellsBook); // Le damos los hechizos del libro al mago
+Console.WriteLine("La defensa es: " + gandalf.DefenseValue); // Imprime la defensa del mago
+//Repetimos lo anterior pero con el personaje Dwarf, y los items Axe, Helmet y Shield
 Dwarf gimli = new Dwarf("Gimli");
 Axe hacha = new Axe();
 Helmet casco = new Helmet();
@@ -19,11 +19,11 @@ gimli.AddItem(escudo);
 
 Console.WriteLine($"Gimli has hp: {gimli.Health}");
 Console.WriteLine($"Gandalf attacks Gimli with attack value: {gandalf.AttackValue}");
-
+//Dwarf recibe ataque del mago
 gimli.ReceiveAttack(gandalf);
 
 Console.WriteLine($"Gimli has hp: {gimli.Health}");
-
+//Se cura al Dwarf
 gimli.Cure();
 
 Console.WriteLine($"Gimli has hp: {gimli.Health}");
