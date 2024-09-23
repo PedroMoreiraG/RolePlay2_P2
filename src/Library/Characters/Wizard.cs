@@ -1,29 +1,26 @@
 namespace Ucu.Poo.RoleplayGame;
-using System;
-using System.Collections.Generic;
-
 
 public class Wizard:IMagicalCharacters
 {
     private int health;
+    private string name;
     private List<IItem> Items= new List<IItem>();
     private List<IMagicalItem> MagicalItems= new List<IMagicalItem>();
-    public Staff Staff;
 
     public Wizard(string name)
     {
-        string Name = name;
+        this.name = name;
     }
     
     public string Name
     {
-        get { return this.Name; }
+        get { return this.name; }
     }
     
     public int Health
     {
-        get{ return this.Health; }
-        set{ this.Health=value; }
+        get{ return this.health; }
+        set{ this.health=value; }
     }
 
 
@@ -31,14 +28,22 @@ public class Wizard:IMagicalCharacters
     {   
         get
         {
-            int attack=0;
-            foreach(IAttackItems item in Items)
+            int attack = 0;
+            foreach (IItem item in Items)
+                //Recorre la lista de items y si este es un item de defensa, lo suma a la variable defense
             {
-                attack+=item.AttackValue;
+                if (item is IAttackItems attackItem)
+                {
+                    attack += attackItem.AttackValue;
+                }
             }
-            foreach(IMagicalAttackItems item in MagicalItems)
+
+            foreach (IMagicalItem item in MagicalItems)
             {
-                attack += item.AttackValue;
+                if (item is IMagicalAttackItems attackMagicalItem)
+                {
+                    attack += attackMagicalItem.AttackValue;
+                }
             }
             return attack;
         }
@@ -49,20 +54,26 @@ public class Wizard:IMagicalCharacters
     {   
         get
         {
-            foreach(IDefenseItems item in Items)
+            int defense = 0;
+            foreach (IItem item in Items)
+                //Recorre la lista de items y si este es un item de defensa, lo suma a la variable defense
             {
-                this.DefenseValue+=item.DefenseValue;
+                if (item is IDefenseItems defenseItem)
+                {
+                    defense += defenseItem.DefenseValue;
+                }
             }
-            foreach(IMagicalDefenseItems item in MagicalItems)
-            {
-                this.DefenseValue+=item.DefenseValue;
-            }
-            return this.DefenseValue;
-        }
-        set{ this.DefenseValue=value;}
-    }
 
-    public SpellsBook SpellsBook { get; set; }
+            foreach (IMagicalItem item in MagicalItems)
+            {
+                if (item is IMagicalDefenseItems defenseMagicalItem)
+                {
+                    defense += defenseMagicalItem.DefenseValue; 
+                }
+            }
+            return defense;
+        }
+    }
 
 
     public void AddItem(IItem item)
@@ -100,15 +111,31 @@ public class Wizard:IMagicalCharacters
     
     public void ReceiveAttack(ICharacters attacker)
     {
-        if(attacker.AttackValue> this.DefenseValue)
+        if (attacker.Name != this.name) //Para que no se ataque a si mismo
         {
-            this.Health-= attacker.AttackValue-this.DefenseValue;
-            Console.WriteLine($"El ataque ha vencido las defensas de {this.Name}.\nVida restante: {this.Health}");
+            if (this.health > 0) //Para saber si esta vivo
+            {
+                if (attacker.AttackValue > this.DefenseValue) 
+                    //Si el ataque es mas alto que la defensa, resta la defensa al ataque y baja sus puntos de vida
+                {
+                    int damage = attacker.AttackValue - this.DefenseValue;
+                    this.health -= damage;
+                    Console.WriteLine($"El ataque ha vencido las defensas de {this.name}.\nVida restante: {this.health}");
+                }
+                else
+                {
+                    //Si no lo es, no le resta puntos de vida
+                    Console.WriteLine($"Los escudos de {this.name} resistieron el ataque.\nEscudo restante: {this.DefenseValue}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"{this.name}, no tiene puntos de vida, necesita curación.");
+            }
         }
-        else{
-            this.DefenseValue-=attacker.AttackValue;
-            Console.WriteLine($"Los escudos de {this.Name} resistieron el ataque.\nEscudo restante: {this.DefenseValue}");
-
+        else
+        {
+            Console.WriteLine($"{this.name}, no te puedes atacar a ti mismo");
         }
     }
 }
