@@ -99,14 +99,13 @@ public class Wizard:IMagicalCharacters
     }
     
     
-    public void AddItem(IMagicalItem item)
+    public void AddMagicalItem(IMagicalItem item)
     {
         this.MagicalItems.Add(item);
-
     }
     
     
-    public void RemoveItem(IMagicalItem item)
+    public void RemoveMagicalItem(IMagicalItem item)
     {
         this.MagicalItems.Remove(item);
 
