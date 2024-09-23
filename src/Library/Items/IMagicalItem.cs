@@ -2,5 +2,5 @@
 
 public interface IMagicalItem:IItem
 {
-    // Creo interface Items con el fin de albergar todos los items sean de ataque o de defensa
+    // Creo interface Items con el fin de albergar todos los items magicos sean de ataque o de defensa
 }
