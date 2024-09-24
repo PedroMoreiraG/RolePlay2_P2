@@ -40,11 +40,6 @@ public class Wizard:IMagicalCharacters
 
             foreach (IMagicalItem item in MagicalItems)
             {
-                if (item is IMagicalAttackItems attackMagicalItem)
-                {
-                    attack += attackMagicalItem.AttackValue;
-                }
-
                 if (item is SpellsBook spellsbook)
                 {
                     attack += spellsbook.AttackValue;
@@ -71,11 +66,6 @@ public class Wizard:IMagicalCharacters
 
             foreach (IMagicalItem item in MagicalItems)
             {
-                if (item is IMagicalDefenseItems defenseMagicalItem)
-                {
-                    defense += defenseMagicalItem.DefenseValue; 
-                }
-
                 if (item is SpellsBook spellsBook)
                 {
                     defense += spellsBook.DefenseValue;
@@ -102,6 +92,7 @@ public class Wizard:IMagicalCharacters
     public void AddMagicalItem(IMagicalItem item)
     {
         this.MagicalItems.Add(item);
+
     }
     
     

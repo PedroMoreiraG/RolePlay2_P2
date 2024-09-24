@@ -3,10 +3,10 @@
 Wizard gandalf = new Wizard("Gandalf"); // Personaje Mago
 Staff staff = new Staff(); // Creamos baculo
 SpellsBook spellsBook = new SpellsBook(); // Creamos libro de hechizos
-Spell bolaDeFuego = new Spell("Bola de fuego",20,20); // Creamos item de hechizo, con su ataque y defensa
+Spell bolaDeFuego = new Spell("Bola de fuego",60,15); // Creamos item de hechizo, con su ataque y defensa
 spellsBook.AddSpell(bolaDeFuego); //Agregamos item bolaDeFuego al libro
 gandalf.AddItem(staff); // Le damos item al mago
-gandalf.AddItem(spellsBook); // Le damos los hechizos del libro al mago
+gandalf.AddMagicalItem(spellsBook); // Le damos los hechizos del libro al mago
 Console.WriteLine("La defensa es: " + gandalf.DefenseValue); // Imprime la defensa del mago
 //Repetimos lo anterior pero con el personaje Dwarf, y los items Axe, Helmet y Shield
 
